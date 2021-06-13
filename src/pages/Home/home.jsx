@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
-import { Grid, Col } from "@mantine/core";
 import DOMPurify from "dompurify";
 import CssBox from "./components/css-box";
 import CodeEditor from "./components/code-editor";
+import { Flex, Box } from "@chakra-ui/react";
 
 export default function Home() {
   let [html, setHtml] = useState();
@@ -28,20 +28,20 @@ export default function Home() {
   };
   return (
     <>
-      <Grid style={{ height: "100%" }}>
-        <Col span={4} style={{ height: "100%" }}>
+      <Flex>
+        <Box flex="1">
           <CodeEditor onChange={handleHtmlChange} value={html} />
-        </Col>
-        <Col span={4}>
+        </Box>
+        <Box flex="1">
           <div
             dangerouslySetInnerHTML={{ __html: sanitizer(html) }}
             onClick={handleOnClick}
           />
-        </Col>
-        <Col span={4}>
+        </Box>
+        <Box flex="1">
           <CssBox applyStyles={applyStyles} />
-        </Col>
-      </Grid>
+        </Box>
+      </Flex>
     </>
   );
 }
