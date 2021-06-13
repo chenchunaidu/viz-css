@@ -1,7 +1,8 @@
 import React,{useState,useCallback} from 'react'
-import { Grid, Col,Textarea } from '@mantine/core';
+import { Grid, Col } from '@mantine/core';
 import DOMPurify from 'dompurify';
 import CssBox from './components/css-box'
+import CodeEditor from './components/code-editor'
 
 export default function Home() {
     let [html,setHtml] = useState()
@@ -22,21 +23,15 @@ export default function Home() {
         },
         [selectedElement],
     )
-    const handleHtmlChange = (e)=>{
-        setHtml(e.target.value)   
+    const handleHtmlChange = (data)=>{
+        setHtml(data)   
     }
     return (
 
         <>
             <Grid style={{height:"100%"}}>
                 <Col span={4} style={{height:"100%"}}>
-                <Textarea
-                    style={{height:"100%"}}
-                    placeholder="Enter your html here"
-                    label="HTML"
-                    onChange={handleHtmlChange} value={html}
-                   
-                    />    
+                    <CodeEditor onChange={handleHtmlChange} value={html}/>
                 </Col>
                 <Col span={4}>
                     <div dangerouslySetInnerHTML={{__html: sanitizer(html)}} onClick={handleOnClick} />
