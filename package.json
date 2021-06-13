@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@hookform/resolvers": "^2.5.2",
     "@mantine/core": "^1.2.1",
     "@mantine/hooks": "^1.2.1",
     "@monaco-editor/react": "^4.2.0",
@@ -11,13 +14,16 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "dompurify": "^2.2.8",
+    "framer-motion": "^4.1.17",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.8.4",
     "react-jss": "^10.6.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "recoil": "^0.3.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
