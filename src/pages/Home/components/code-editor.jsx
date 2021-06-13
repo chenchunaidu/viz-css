@@ -1,9 +1,14 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
 
-export default function CodeEditor({onChange,theme="vs-dark",height="100vh",defaultLanguage="html",value}) {
- 
-    const defaultValue = `<!DOCTYPE html>
+export default function CodeEditor({
+  onChange,
+  theme = "vs-dark",
+  height = "100vh",
+  defaultLanguage = "html",
+  value,
+}) {
+  const defaultValue = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -14,16 +19,16 @@ export default function CodeEditor({onChange,theme="vs-dark",height="100vh",defa
     <body>
         
     </body>
-    </html>`
+    </html>`;
 
-    return (
-   <Editor
-     height={height}
-     defaultLanguage={defaultLanguage}
-     defaultValue={defaultValue}
-     theme={theme}
-     onChange = {onChange}
-     value={value}
-   />
+  return (
+    <Editor
+      height={height}
+      defaultLanguage={defaultLanguage}
+      defaultValue={defaultValue}
+      theme={theme}
+      onChange={onChange}
+      value={value}
+    />
   );
 }
