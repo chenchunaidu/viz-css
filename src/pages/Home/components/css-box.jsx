@@ -1,56 +1,30 @@
 import React from 'react';
-import { TextInput,Button} from '@mantine/core';
-import { useForm } from '@mantine/hooks';
-import CssBoxContainer from './css-box-container'
+import { Stack,Text } from '@chakra-ui/react';
+import {Layout,Spacing,Size,Typography,Backgrounds,Border,Effect} from './index'
+import MultiAccordion from 'components/Accordion/multi-accordion'
 
 export default function Demo({applyStyles}) {
-  const form = useForm({
-    initialValues: {
-      color:"",
-      background:""
-    },
-
-    validationRules: {
-      email: (value) => /^\S+@\S+$/.test(value),
-    },
-  });
-
+  const tools = ["Layout","Spacing","Size","Typography","Backgrounds","Border","Effect"]
+  const cssInputComponentButton = tools.map((tool,index)=><Text key={index}>{tool}</Text>)
+  const cssInputComponents = [<Layout key="layout"/>,<Spacing key="spacing"/>,<Size key="size"/>,<Typography key="typography"/>,<Backgrounds key="backgrounds"/>,<Border key="border"/>,<Effect key="effect"/>]
+  let accordionItems = []
+  for(let i=0;i<cssInputComponentButton.length;i++){
+    let accordionItem = {}
+    accordionItem.AccordionButtonComponent = cssInputComponentButton[i]
+    accordionItem.AccordionPanelComponent = cssInputComponents[i]
+    accordionItems[i] = accordionItem 
+  }
   return (
-    <CssBoxContainer>
-
-    
-    <form onSubmit={form.onSubmit((values) => applyStyles(values))}>
-        <div>
-            CSS
-        </div>
-        <div style={{ display: 'flex', marginBottom: 15 }}>
-            <TextInput
-              placeholder="Enter color"
-              label="color"
-              style={{ marginRight: 20, flex: '0 0 calc(50% - 10px)' }}
-              value={form.values.firstName}
-              onChange={(event) => form.setFieldValue('color', event.currentTarget.value)}
-              onFocus={() => form.setFieldError('color', false)}
-              error={form.errors.color && 'color is required'}
-              
-            />
-
-            <TextInput
-              placeholder="Enter background color"
-              label="Background"
-              style={{ flex: '0 0 calc(50% - 10px)' }}
-              value={form.values.background}
-              onChange={(event) => form.setFieldValue('background', event.currentTarget.value)}
-              onFocus={() => form.setFieldError('background', false)}
-              error={form.errors.lastName && 'Last name should include at least 2 characters'}
-              
-            />
-           
-          </div>
-          <Button type="submit">
-              apply
-            </Button>
-    </form>
-    </CssBoxContainer>
+    <Stack as="form" onSubmit={applyStyles} width="full">
+      {/* <FormControl id="color">
+        <FormLabel>Color</FormLabel>
+        <Input placeholder="Color" name="color" />
+      </FormControl>
+      <FormControl id="background">
+        <FormLabel>Background</FormLabel>
+        <Input placeholder="Background" name="background" />
+      </FormControl> */}
+      <MultiAccordion accordionItems={accordionItems} />
+    </Stack>
   );
 }

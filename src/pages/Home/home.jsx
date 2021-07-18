@@ -2,24 +2,21 @@ import React, { useState, useCallback } from "react";
 import DOMPurify from "dompurify";
 import CssBox from "./components/css-box";
 import CodeEditor from "./components/code-editor";
-import { Flex, Box } from "@chakra-ui/react";
+import {   Flex, Stack } from "@chakra-ui/react";
+import {initialValue} from './data/initial-value'
+import {addStylesToElements} from 'utils/style-fns'
 
 export default function Home() {
-  let [html, setHtml] = useState();
+  let [html, setHtml] = useState(initialValue);
   let [selectedElement, setSelectedElement] = useState();
   const sanitizer = DOMPurify.sanitize;
   const handleOnClick = (e) => {
+    // e.target.style.borderStyle="dashed"
     setSelectedElement(e);
   };
   const applyStyles = useCallback(
     (values) => {
-      const { color, background } = values;
-      if (color) {
-        selectedElement.target.style.color = color;
-      }
-      if (background) {
-        selectedElement.target.style.background = background;
-      }
+      addStylesToElements(selectedElement,values)
     },
     [selectedElement]
   );
@@ -28,20 +25,20 @@ export default function Home() {
   };
   return (
     <>
-      <Flex>
-        <Box flex="1">
+      <Stack spacing="2" direction="row">
+        <Flex flex="2">
           <CodeEditor onChange={handleHtmlChange} value={html} />
-        </Box>
-        <Box flex="1">
+        </Flex>
+        <Flex flex="2">
           <div
             dangerouslySetInnerHTML={{ __html: sanitizer(html) }}
             onClick={handleOnClick}
           />
-        </Box>
-        <Box flex="1">
+        </Flex>
+        <Flex flex="1">
           <CssBox applyStyles={applyStyles} />
-        </Box>
-      </Flex>
+        </Flex>
+      </Stack>
     </>
   );
 }
