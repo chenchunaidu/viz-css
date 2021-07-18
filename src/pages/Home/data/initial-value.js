@@ -1,4 +1,4 @@
-export const initialValue = ()=>`<!DOCTYPE html>
+export const initialValue = () => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />

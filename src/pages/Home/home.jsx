@@ -2,9 +2,9 @@ import React, { useState, useCallback } from "react";
 import DOMPurify from "dompurify";
 import CssBox from "./components/css-box";
 import CodeEditor from "./components/code-editor";
-import {   Flex, Stack } from "@chakra-ui/react";
-import {initialValue} from './data/initial-value'
-import {addStylesToElements} from 'utils/style-fns'
+import { Flex, Stack } from "@chakra-ui/react";
+import { initialValue } from "./data/initial-value";
+import { addStylesToElements } from "utils/style-fns";
 
 export default function Home() {
   let [html, setHtml] = useState(initialValue);
@@ -16,7 +16,7 @@ export default function Home() {
   };
   const applyStyles = useCallback(
     (values) => {
-      addStylesToElements(selectedElement,values)
+      addStylesToElements(selectedElement, values);
     },
     [selectedElement]
   );
