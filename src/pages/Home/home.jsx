@@ -10,10 +10,13 @@ export default function Home() {
   let [html, setHtml] = useState(initialValue);
   let [selectedElement, setSelectedElement] = useState();
   const sanitizer = DOMPurify.sanitize;
-  const handleOnClick = (e) => {
-    // e.target.style.borderStyle="dashed"
+  const handleOnClick = useCallback((e) => {
+    if(selectedElement){
+      selectedElement.target.style.border="None"
+    }
+    e.target.style.border="3px dashed black"
     setSelectedElement(e);
-  };
+  },[selectedElement]);
   const applyStyles = useCallback(
     (values) => {
       addStylesToElements(selectedElement,values)
