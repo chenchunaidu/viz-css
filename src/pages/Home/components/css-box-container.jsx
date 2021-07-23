@@ -1,11 +1,10 @@
-import React from 'react'
-import { Paper } from '@mantine/core';
+import React from "react";
+import { Box } from "@chakra-ui/react";
 
-
-export default function CssBoxContainer({children}) {
-    return (
-        <Paper padding="md" shadow="xs" style={{height:"100%"}}>
-            {children}
-            </Paper>
-    )
+export default function CssBoxContainer({ children }) {
+  return (
+    <Box padding="md" boxShadow="lg" style={{ height: "100%" }}>
+      {children}
+    </Box>
+  );
 }
