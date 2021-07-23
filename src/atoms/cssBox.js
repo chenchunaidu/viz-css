@@ -1,7 +1,5 @@
-import { atom } from "recoil"
+import { atom } from "recoil";
 export const cssBoxState = atom({
-    key:"cssBoxState",
-    default:{
-
-    }
-})
+  key: "cssBoxState",
+  default: {},
+});

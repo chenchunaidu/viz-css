@@ -1,7 +1,15 @@
-import React from 'react';
-import { Stack,Text,Button } from '@chakra-ui/react';
-import {Layout,Spacing,Size,Typography,Backgrounds,Border,Effect} from './index'
-import MultiAccordion from 'components/Accordion/multi-accordion'
+import React from "react";
+import { Stack, Text, Button } from "@chakra-ui/react";
+import {
+  Layout,
+  Spacing,
+  Size,
+  Typography,
+  Backgrounds,
+  Border,
+  Effect,
+} from "./index";
+import MultiAccordion from "components/Accordion/multi-accordion";
 
 export default function Demo({ applyStyles }) {
   const tools = [
@@ -33,9 +41,11 @@ export default function Demo({ applyStyles }) {
     accordionItems[i] = accordionItem;
   }
   return (
-    <Stack  width="full">
+    <Stack width="full">
       <MultiAccordion accordionItems={accordionItems} />
-      <Button type="submit" onClick={applyStyles}>Apply</Button>
+      <Button type="submit" onClick={applyStyles}>
+        Apply
+      </Button>
     </Stack>
   );
 }
