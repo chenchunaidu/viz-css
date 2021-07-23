@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack,Text } from '@chakra-ui/react';
+import { Stack,Text,Button } from '@chakra-ui/react';
 import {Layout,Spacing,Size,Typography,Backgrounds,Border,Effect} from './index'
 import MultiAccordion from 'components/Accordion/multi-accordion'
 
@@ -15,16 +15,9 @@ export default function Demo({applyStyles}) {
     accordionItems[i] = accordionItem 
   }
   return (
-    <Stack as="form" onSubmit={applyStyles} width="full">
-      {/* <FormControl id="color">
-        <FormLabel>Color</FormLabel>
-        <Input placeholder="Color" name="color" />
-      </FormControl>
-      <FormControl id="background">
-        <FormLabel>Background</FormLabel>
-        <Input placeholder="Background" name="background" />
-      </FormControl> */}
+    <Stack  width="full">
       <MultiAccordion accordionItems={accordionItems} />
+      <Button type="submit" onClick={applyStyles}>Apply</Button>
     </Stack>
   );
 }

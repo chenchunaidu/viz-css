@@ -5,11 +5,14 @@ import CodeEditor from "./components/code-editor";
 import {   Flex, Stack } from "@chakra-ui/react";
 import {initialValue} from './data/initial-value'
 import {addStylesToElements} from 'utils/style-fns'
+import { useRecoilState } from "recoil";
+import {cssBoxState} from 'atoms/cssBox'
 
 export default function Home() {
   let [html, setHtml] = useState(initialValue);
   let [selectedElement, setSelectedElement] = useState();
   const sanitizer = DOMPurify.sanitize;
+  const [cssBoxData] = useRecoilState(cssBoxState)
   const handleOnClick = useCallback((e) => {
     if(selectedElement){
       selectedElement.target.style.border="None"
@@ -18,10 +21,11 @@ export default function Home() {
     setSelectedElement(e);
   },[selectedElement]);
   const applyStyles = useCallback(
-    (values) => {
-      addStylesToElements(selectedElement,values)
+    () => {
+      console.log(cssBoxData)
+      addStylesToElements(selectedElement,cssBoxData)
     },
-    [selectedElement]
+    [selectedElement,cssBoxData]
   );
   const handleHtmlChange = (data) => {
     setHtml(data);
