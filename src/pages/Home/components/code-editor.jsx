@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useRef} from "react";
 import Editor from "@monaco-editor/react";
+// import ReactResizeDetector from 'react-resize-detector';
 
 export default function CodeEditor({
   onChange,
@@ -8,6 +9,13 @@ export default function CodeEditor({
   defaultLanguage = "html",
   value,
 }) {
+
+  const editorRef = useRef(null);
+  function handleEditorDidMount(editor) {
+    editorRef.current = editor; 
+    console.log(editor)
+  }
+
   const defaultValue = `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -28,6 +36,7 @@ export default function CodeEditor({
   </html>`;
 
   return (
+
     <Editor
       height={height}
       defaultLanguage={defaultLanguage}
@@ -35,6 +44,8 @@ export default function CodeEditor({
       theme={theme}
       onChange={onChange}
       value={value}
-    />
+      automaticLayout={true}
+      onMount={handleEditorDidMount}
+    />    
   );
 }
