@@ -48,11 +48,12 @@ export default function Layout() {
           <FormControl id="width">
             <Stack>
               <FormLabel>Align items</FormLabel>
-               <Select
+              <Select
                 placeholder="Select option"
                 value={cssBox["align-items"]}
                 onChange={(e) => {
-                  setCssBox({ ...cssBox, "align-items": e.target.value })}}
+                  setCssBox({ ...cssBox, "align-items": e.target.value });
+                }}
               >
                 <option value="flex-start">Flex start</option>
                 <option value="flex-end">Flex end</option>

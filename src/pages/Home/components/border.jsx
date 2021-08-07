@@ -9,18 +9,18 @@ export default function Border() {
     <>
       <FormControl>
         <FormLabel>Border</FormLabel>
-        <Input 
-          value={cssBox["border"]} 
+        <Input
+          value={cssBox["border"]}
           onChange={(e) => {
-              setCssBox({ ...cssBox, "border": e.target.value });
-            }}
-            />
+            setCssBox({ ...cssBox, border: e.target.value });
+          }}
+        />
       </FormControl>
       <FormControl>
         <FormLabel>Border radius</FormLabel>
-        <Input 
-        value={cssBox["border-radius"]} 
-        onChange={(e) => {
+        <Input
+          value={cssBox["border-radius"]}
+          onChange={(e) => {
             setCssBox({ ...cssBox, "border-radius": e.target.value });
           }}
         />

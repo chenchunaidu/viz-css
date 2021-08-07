@@ -8,11 +8,12 @@ export default function Effect() {
   return (
     <FormControl>
       <FormLabel>Box shadow</FormLabel>
-      <Input 
-        value={cssBox["box-shadow"]} 
+      <Input
+        value={cssBox["box-shadow"]}
         onChange={(e) => {
-            setCssBox({ ...cssBox, "box-shadow": e.target.value });
-          }}/>
+          setCssBox({ ...cssBox, "box-shadow": e.target.value });
+        }}
+      />
     </FormControl>
   );
 }
