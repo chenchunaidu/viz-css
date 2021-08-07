@@ -33,16 +33,16 @@ export default function Home() {
   return (
     <>
       <Stack spacing="2" direction="row">
-        <Flex flex="2">
+        <Flex flex="2" flexGrow="1">
           <CodeEditor onChange={handleHtmlChange} value={html} />
         </Flex>
-        <Flex flex="2">
+        <Flex flex="2" flexGrow="1">
           <div
             dangerouslySetInnerHTML={{ __html: sanitizer(html) }}
             onClick={handleOnClick}
           />
         </Flex>
-        <Flex flex="1">
+        <Flex flex="1" flexGrow="1">
           <CssBox applyStyles={applyStyles} />
         </Flex>
       </Stack>
